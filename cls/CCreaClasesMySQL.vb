@@ -267,7 +267,7 @@ Public Class CMiembrosMySQL
     'accederlos, tambien se genera una colección para almacenar objetos
     'y al final una clase que permite ordenar la colección de objetos
     'Se agrego el manejo de Vista para que ponga un namespace extra con la palabra "Vista"
-    Public Function GeneraClase(Optional ByVal frm As frmCCMySQLSchema = Nothing, _
+    Public Function GeneraClase(Optional ByVal frm As frmCCMySQLSchema = Nothing, 
                                 Optional TTabla As Tipo_Tabla = Tipo_Tabla.Tabla) As String
         Dim objBase As CMiembroMySQL
         Dim strTEMPO As String
@@ -527,25 +527,7 @@ Public Class CMiembrosMySQL
             'PRIMERO, AGREGA EL CONSTRUCTOR DE LA CLASE, YA QUE A MANO ES UN PAIN IN THE ASS
             Clase.AppendLine(MTab(1) & " <System.Diagnostics.DebuggerStepThrough()> _")
             Clase.Append(MTab(1) & "Public Sub New()" & vbNewLine)
-            'For Each objBase In Me
-            '    Select Case UCase(objBase.Tipo)
-            '        Case "DECIMAL", "INTEGER", "SHORT", "LONG"
-            '            Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = 0" & vbNewLine)
-            '        Case "BOOLEAN"
-            '            Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = false" & vbNewLine)
-            '        Case "DATETIME", "MYSQLDATETIME"
-            '            Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = New MySqlDateTime(0, 0, 0, 0, 0, 0, 0)" & vbNewLine)
-            '        Case "TIMESPAN"
-            '            Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = New TimeSpan(0, 0, 0)" & vbNewLine)
-            '        Case Else
-            '            If InStr(objBase.TipoBD.ToUpper, "BLOB", CompareMethod.Text) <> 0 Or _
-            '               InStr(objBase.TipoBD.ToUpper, "BINARY", CompareMethod.Text) <> 0 Then
-            '                Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = Nothing" & vbNewLine)
-            '            Else
-            '                Clase.Append(MTab(2) & objBase.Propiedad.ToUpper & " = """"" & vbNewLine)
-            '            End If
-            '    End Select
-            'Next
+           
             Clase.AppendLine(MTab(2) & "INIT()")
             If Tiene_LLave Then Clase.AppendLine(MTab(2) & "INIT_LLAVE()")
             Clase.Append(MTab(1) & "End Sub" & vbNewLine & vbNewLine)
